@@ -1,0 +1,364 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Consolas;}{\f2\fnil\fcharset0 Consolas;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\qc\ul\b\f0\fs22\lang9\par
+\par
+\par
+
+\pard\sa200\sl276\slmult1 Source code for Banking System:\par
+
+\pard\sa200\sl276\slmult1\qc index.jsp\ulnone\b0\par
+
+\pard\sa200\sl276\slmult1 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"\par
+    pageEncoding="ISO-8859-1"%>\par
+<!DOCTYPE html>\par
+<html>\par
+<head>\par
+<meta charset="ISO-8859-1">\par
+<title>HOME</title>\par
+</head>\par
+<body background="jsp.jpg"> \par
+<form action="bankconnect.jsp" method="post">\par
+<h1 align=center>BANKING SYSTEM</h1>\par
+<fieldset>\par
+<h2>Enter the details to store in account 1</h2>\par
+<label><b>S.NO:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\par
+<input type="text"  name="sno"><br>\par
+\par
+<label>ACCOUNT NO:</label> <b></b>\par
+<input type="text"  name="Accno"><br>\par
+\par
+<label>Ac Holder:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\par
+<input type="text " name="AccHolder"><br>\par
+\par
+<label>Deposite:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\par
+<input type="text" name="Deposite"><br>\par
+<input type="submit" value="Enter into DB" style="background-color:#ADD8E6" >\par
+ <b></b>\par
+</fieldset>\par
+</form>\par
+<form action="bankconnect1.jsp" method="post">\par
+<fieldset>\par
+<h2>Enter the details to store in account 2</h2>\par
+<label>S.NO:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\par
+<input type="text"  name="sno"><br>\par
+<label>ACCOUNT NO:</label>&nbsp;\par
+<input type="text"  name="accno"><br>\par
+<label>Ac Holder:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\par
+<input type="text " name="Holder"><br>\par
+<label>Deposite:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\par
+<input type="text" name="Deposite"><br>\par
+<input type="submit" value="Enter into DB" style="background-color:#ADD8E6" >\par
+</fieldset>\par
+</form>\par
+<form action="transfer.jsp" method="post">\par
+<fieldset>\par
+<h2>Transactions  </h2>\par
+<input type="submit" value="Transfer" style="background-color:#ADD8E6" >\par
+</fieldset>\par
+</form>\par
+<form action="fetch1.jsp" method=post>\par
+<fieldset>\par
+<h2>Mini Statement Last 5 Transactions</h2>\par
+<input type="submit" value="MINI STATEMENT" style="background-color:#ADD8E6" >\par
+ </fieldset>\par
+</form>\par
+</body>\par
+</html> \par
+
+\pard\sa200\sl276\slmult1\qc\ul\b transfer.jsp\par
+
+\pard\sa200\sl276\slmult1\ulnone\b0\f1\fs20 <%@ page language=\i "java"\i0  contentType=\i "text/html; charset=ISO-8859-1"\i0\par
+    pageEncoding=\i "ISO-8859-1"\i0 %>\par
+<!DOCTYPE html>\par
+<html>\par
+<head>\par
+<meta charset=\i "ISO-8859-1"\i0 >\par
+<title>Transfer ac1 to ac2</title>\par
+</head>\par
+<body background=\i "jsp.jpg"\i0 >\par
+<form action=\i "fetcht.jsp"\i0  method=\i post\i0 >\par
+<fieldset>\par
+<div align=\i left\i0  >\par
+<a href=\i "index.jsp"\i0 ><b>HOME</b> </a>\par
+</div>\par
+<br>\par
+<label>Ac1:</label><b> <br>\par
+<input type=\i "text"\i0   name=\i "sno"\i0 ><br>\par
+<br>\par
+<label>Ac2:</label><br>\par
+<input type=\i "text"\i0   name=\i "sno"\i0 ><br>\par
+<br>\par
+<label>HOW MUCH DO YOU WANT TO TRANSFER:</label> <br>\par
+<input type=\i "text"\i0   name=\i "transfer"\i0 ><br>\par
+<br>\par
+<input type=\i "submit"\i0  value=\i "Transfer"\i0  style="background-color:\i #ADD8E6\i0 " > \par
+<a href=\i "fetch1.jsp"\i0 ><b>MINI-STATEMENTS</b> </a>\par
+</b>\par
+</fieldset>\par
+</form>\par
+</body>\par
+</html>\f0\fs22\par
+\par
+
+\pard\sa200\sl276\slmult1\qc\ul\b fetcht.jsp\par
+
+\pard\sa200\sl276\slmult1\ulnone\b0\f1\fs20 <%@ page import=\i "java.sql.*"\i0  language=\i "java"\i0  contentType=\i "text/html; charset=ISO-8859-1"\i0\par
+    pageEncoding=\i "ISO-8859-1"\i0 %>\par
+<!DOCTYPE html>\par
+<html>\par
+<head>\par
+<meta charset=\i "ISO-8859-1"\i0 >\par
+<title>FETCHING THE DATA FROM DATABASE</title>\par
+</head>\par
+<body background=\i "jsp.jpg"\i0 >\par
+<div align=\i left\i0  >\par
+<a href=\i "index.jsp"\i0 ><b>HOME</b> </a>\par
+</div>\par
+\ul <center>\ulnone\par
+<h1>Details about \ul acc\ulnone -1</h1>\par
+\tab <table border=\i "1"\i0 >\par
+\tab\tab <tr style="background-color:\i #E0FFFF\i0 " \ul color\ulnone =\i "blue"\i0  >\par
+\tab\tab <td>acc_no</td>\par
+\tab\tab <td >ac1_initial \ul bal\ulnone  </td>\par
+\tab\tab\tab <td >ac1_debit </td>\par
+\tab\tab\tab <td>ac1_bal </td>\par
+\tab\tab\tab <td>DATE </td>\tab\par
+\tab\tab\tab </tr>\par
+<%\par
+Connection Conn=\b null\b0 ;\par
+Statement st=\b null\b0 ;\par
+ResultSet rs=\b null\b0 ;\par
+\b try\b0\par
+\{\par
+\tab Class.forName("com.mysql.jdbc.Driver");\par
+\tab Conn=(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","Ranjeth26");\par
+\tab st=Conn.createStatement();\par
+\tab String qry=("SELECT accno,bank.bank.Deposite,bank.bank.Deposite-23000,bank.bank.Deposite-1000,CURDATE()+0  from bank");\par
+\tab rs=st.executeQuery(qry);\par
+\tab\b while\b0 (rs.next())\par
+\tab\{\par
+\tab\tab %>\par
+\tab\tab <tr>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=rs.getString(1) %></td>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=rs.getString(2) %></td>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=rs.getString(3) %></td>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=rs.getString(4) %></td>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=rs.getString(5) %></td>\tab\tab\par
+\tab\tab <% \par
+\tab\}\par
+\}\par
+\tab\b catch\b0 (Exception ex)\par
+\tab\{\par
+\tab\}\par
+%>\par
+</table>\par
+\ul <table>\ulnone\par
+\ul <h1>\ulnone Details about \ul acc\ulnone -2</h1>\par
+\ul <table border=\i "1"\i0 >\ulnone\par
+\tab\tab <tr style="background-color:\i #E0FFFF\i0 " \ul color\ulnone =\i "blue"\i0  align=\i center\i0  >\par
+\tab\tab <td>Acc_no</td>\par
+\tab\tab <td >ac2_initial \ul bal\ulnone  </td>\par
+\tab\tab\tab <td >ac2_credit </td>\par
+\tab\tab\tab <td>ac2_bal </td>\par
+\tab\tab\tab <td>DATE  </td>\tab\tab\par
+\tab\tab\tab </tr>\par
+<%\par
+Connection myConn=\b null\b0 ;\par
+Statement myst=\b null\b0 ;\par
+ResultSet myrs=\b null\b0 ;\par
+\b try\b0\par
+\{\par
+\tab Class.forName("com.mysql.jdbc.Driver");\par
+\tab myConn=(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/banks","root","Ranjeth26");\par
+\tab myst=myConn.createStatement();\par
+\tab String qry=("SELECT accno,banks.banks.Deposite,banks.banks.Deposite-34000,banks.banks.Deposite+1000, CURDATE()+0 from banks");\par
+\tab myrs=myst.executeQuery(qry);\par
+\tab\b while\b0 (myrs.next())\par
+\tab\{\par
+\tab\tab %>\par
+\tab\tab <tr>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=myrs.getString(1) %></td>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=myrs.getString(2) %></td>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=myrs.getString(3) %></td>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=myrs.getString(4) %></td>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=myrs.getString(5) %></td>\par
+\tab\tab <% \par
+\tab\}\par
+\}\par
+\tab\b catch\b0 (Exception ex)\par
+\tab\{\par
+\tab\}\par
+%>\par
+</table>\par
+\ul <br>\ulnone\par
+\ul <br>\ulnone\par
+\ul <br>\ulnone\par
+\ul <form  action=\i fetch1.jsp\i0  method=\i post\i0 >\ulnone\par
+<input type=\i "submit"\i0  value=\i "MINI-STATEMENTS"\i0  style="background-color:\i #ADD8E6\i0 " >\par
+</form>\par
+</body>\par
+</html>\f0\fs22\par
+\par
+
+\pard\sa200\sl276\slmult1\qc\ul\b fetch1.jsp\par
+
+\pard\sa200\sl276\slmult1\ulnone\b0\f1\fs20 <%@ page import=\i "java.sql.*"\i0  language=\i "java"\i0  contentType=\i "text/html; charset=ISO-8859-1"\i0\par
+    pageEncoding=\i "ISO-8859-1"\i0 %>\par
+<!DOCTYPE html>\par
+<html>\par
+<head>\par
+<meta charset=\i "ISO-8859-1"\i0 >\par
+<title>Last 5 Transactions</title>\par
+</head>\par
+<body background=\i "jsp.jpg"\i0 >\par
+<div align=\i left\i0  >\par
+<a href=\i "index.jsp"\i0 ><b>HOME</b> </a>\par
+</div>\par
+\ul <center>\ulnone\par
+<h1>Last 5 Transactions</h1>\par
+\tab <table border=\i "1"\i0 >\par
+\tab\tab <tr style="background-color:\i #E0FFFF\i0 " \ul color\ulnone =\i "blue"\i0  align=\i center\i0  >\par
+\tab\tab     <td>\ul sno\ulnone </td>\par
+\tab\tab\tab <td >\ul accno\ulnone  </td>\par
+\tab\tab\tab <td>Description </td>\par
+\tab\tab\tab <td>Date</td>\par
+\tab\tab\tab <td>Balance</td>\par
+\tab\tab\tab </tr>\par
+<%\par
+Connection Conn=\b null\b0 ;\par
+Statement st=\b null\b0 ;\par
+ResultSet rs=\b null\b0 ;\par
+\par
+\b try\b0\par
+\{\par
+\tab Class.forName("com.mysql.jdbc.Driver");\par
+\tab Conn=(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/transfer","root","Ranjeth26");\par
+\tab st=Conn.createStatement();\par
+\tab String qry=("SELECT * FROM transfer ORDER BY sno ASC");\par
+\tab rs=st.executeQuery(qry);\par
+\tab\b while\b0 (rs.next())\par
+\tab\{\par
+\tab\tab %>\par
+\tab\tab <tr>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=rs.getString(1) %></td>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=rs.getString(2) %></td>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=rs.getString(3) %></td>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=rs.getString(4) %></td>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=rs.getString(5) %></td>\par
+\tab\tab <% \par
+\tab\}\par
+\}\par
+\tab\b catch\b0 (Exception ex)\par
+\tab\{\par
+\tab\}\par
+%>\par
+</table>\par
+</body>\par
+</html>\par
+\par
+
+\pard\sa200\sl276\slmult1\qc\ul\b\f2\lang1033 bankconnect.jsp\ulnone\b0\f1\par
+
+\pard\sa200\sl276\slmult1 <%@page import=\i "java.sql.*"\i0 %>\par
+<%\par
+String sno=request.getParameter("sno");\par
+String Accno=request.getParameter("Accno");\par
+String AccHolder=request.getParameter("AccHolder");\par
+String Deposite=request.getParameter("Deposite");\par
+\b try\b0\{\par
+\tab Class.forName("com.mysql.jdbc.Driver");\par
+\tab Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","Ranjeth26");\par
+\tab Statement st=con.createStatement();\par
+\tab st.executeUpdate("insert into bank (sno,Accno,AccHolder,Deposite) values('"+sno+"','"+Accno+"','"+AccHolder+"','"+Deposite+"')");\par
+\tab response.sendRedirect("save.html");\par
+\}\par
+\b catch\b0 (Exception e)\par
+\{\par
+\tab response.sendRedirect("error.html");\par
+\}\par
+%>\par
+\par
+
+\pard\sa200\sl276\slmult1\qc\ul\b\f2 bankconnect1.jsp\ulnone\b0\f1\par
+
+\pard\sa200\sl276\slmult1 <%@page import=\i "java.sql.*"\i0 %>\par
+<%\par
+String sno=request.getParameter("sno");\par
+String accno=request.getParameter("accno");\par
+String Holder=request.getParameter("Holder");\par
+String Deposite=request.getParameter("Deposite");\par
+\b try\b0\{\par
+\tab Class.forName("com.mysql.jdbc.Driver");\par
+\tab Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/banks","root","Ranjeth26");\par
+\tab Statement st=con.createStatement();\par
+\tab st.executeUpdate("insert into banks(sno,accno,Holder,Deposite) values('"+sno+"','"+accno+"','"+Holder+"','"+Deposite+"')");\par
+\tab response.sendRedirect("save1.html");\par
+\}\par
+\b catch\b0 (Exception e)\par
+\{\par
+\tab response.sendRedirect("error1.html");\par
+\}\par
+%>\par
+\par
+
+\pard\sa200\sl276\slmult1\qc\ul\b\f2 fetch.jsp\par
+
+\pard\sa200\sl276\slmult1\ulnone\b0\f1 <%@ page import=\i "java.sql.*"\i0  language=\i "java"\i0  contentType=\i "text/html; charset=ISO-8859-1"\i0\par
+    pageEncoding=\i "ISO-8859-1"\i0 %>\par
+<!DOCTYPE html>\par
+<html>\par
+<head>\par
+<meta charset=\i "ISO-8859-1"\i0 >\par
+<title>FETCHING THE DATA FROM DATABASE</title>\par
+</head>\par
+<body>\par
+<div align=\i left\i0  >\par
+<a href=\i "index.jsp"\i0 ><b>HOME</b> </a>\par
+</div>\par
+\ul <center>\ulnone\par
+<h1>FETCHING THE DATA FROM 1st TABLE</h1>\par
+\tab <table border=\i "1"\i0 >\par
+\tab\tab <tr style="background-color:\i #E0FFFF\i0 " \ul color\ulnone =\i "blue"\i0  align=\i center\i0  >\par
+\tab\tab\tab <td >\ul sno\ulnone  </td>\par
+\tab\tab\tab <td>\ul Accno\ulnone  </td>\par
+\tab\tab\tab <td>AcHolder </td>\par
+\tab\tab\tab <td>Amount </td>\par
+\tab\tab\tab <td>Transactions </td>\tab\par
+\tab\tab\tab </tr>\par
+<%\par
+Connection Conn=\b null\b0 ;\par
+Statement st=\b null\b0 ;\par
+ResultSet rs=\b null\b0 ;\par
+\b try\b0\par
+\{\par
+\tab Class.forName("com.mysql.jdbc.Driver");\par
+\tab Conn=(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","Ranjeth26");\par
+\tab st=Conn.createStatement();\par
+\tab String qry=("SELECT * FROM (SELECT * FROM BANK ORDER BY ACCNO DESC LIMIT 5)BANK ORDER BY ACCNO ASC");\par
+\tab rs=st.executeQuery(qry);\par
+\tab\b while\b0 (rs.next())\par
+\tab\{\par
+\tab\tab %>\par
+\tab\tab <tr>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=rs.getString(1) %></td>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=rs.getString(2) %></td>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=rs.getString(3) %></td>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=rs.getString(4) %></td>\par
+\tab\tab <td style="background-color:\i #7BCCB5\i0 "><%=rs.getString(5) %></td>\par
+\tab\tab <% \par
+\tab\}\par
+\}\par
+\tab\b catch\b0 (Exception ex)\par
+\tab\{\par
+\tab\}\par
+%>\par
+</table>\par
+</body>\par
+</html>\par
+
+\pard\sa200\sl276\slmult1\qc\ul\b\f0\fs22\lang9 ******The End******\par
+
+\pard\sa200\sl276\slmult1\ulnone\b0\par
+\par
+}
+ 
